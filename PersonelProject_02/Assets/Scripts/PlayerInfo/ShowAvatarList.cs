@@ -7,12 +7,13 @@ public class ShowAvatarList : MonoBehaviour
 {
     public Sprite[] avatars;
     public Image currentAvatar;
+    public GameObject avatarPanel;
     public int avatarIndex = 0;
 
 
     private void Awake()
     {
-        currentAvatar = GameObject.Find("AvatarSprite").GetComponent<Image>();
+        currentAvatar = GameObject.Find("AvatarSprite")?.GetComponent<Image>();
     }
     public void NextAvatar()
     {
@@ -35,5 +36,21 @@ public class ShowAvatarList : MonoBehaviour
         }
         currentAvatar.sprite = avatars[avatarIndex];
         PlayerPrefs.SetInt("PlayerAvatar", avatarIndex);
+    }
+
+    public void ActivateAvatarPanel()
+    {
+        avatarPanel.SetActive(true);
+        currentAvatar = GameObject.Find("AvatarSprite").GetComponent<Image>();
+        Time.timeScale = 0.0f;
+    }
+
+    public void DeactivateAvatarPanel()
+    {
+        currentAvatar.sprite = avatars[avatarIndex];
+        PlayerPrefs.SetInt("PlayerAvatar", avatarIndex);
+        avatarPanel.SetActive(false);
+        currentAvatar = GameObject.Find("AvatarSprite")?.GetComponent<Image>();
+        Time.timeScale = 1.0f;
     }
 }
