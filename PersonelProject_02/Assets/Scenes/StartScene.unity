@@ -565,6 +565,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 08b2e0a1e56ea5a47b1b2a05d95b0af1, type: 3}
   - {fileID: 21300000, guid: 23285a44468a7324ebaa8fd7717c7b0d, type: 3}
   currentAvatar: {fileID: 0}
+  avatarPanel: {fileID: 0}
   avatarIndex: 0
 --- !u!4 &681905831
 Transform:
@@ -838,6 +839,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNameText: {fileID: 948140267}
+  errorMessage: {fileID: 1029244780}
 --- !u!114 &960227258
 MonoBehaviour:
   m_ObjectHideFlags: 0
