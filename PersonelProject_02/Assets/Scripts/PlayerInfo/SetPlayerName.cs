@@ -9,21 +9,28 @@ public class SetPlayerName : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private TextMeshProUGUI playerNameText;
     [SerializeField] private TextMeshProUGUI errorMessage;
-    [SerializeField] private GameObject namePanel; 
+    [SerializeField] private GameObject namePanel;
+    private List<string> names;
     //private ShowAvatarList avatarList;
 
-
+    private void Awake()
+    {
+        names = GameObject.Find("OnlineButton")?.GetComponent<ShowOnlineList>().onlineList;
+    }
     public void SavePlayerName()
     {
         if (playerNameText.text.Length >= 3 && playerNameText.text.Length <= 10)
         {
+            names.Remove(PlayerPrefs.GetString("PlayerName"));
             PlayerPrefs.SetString("PlayerName", playerNameText.text);
+            names.Add(PlayerPrefs.GetString("PlayerName"));
             namePanel.SetActive(false);
             Time.timeScale = 1.0f;
         }
 
         else
             errorMessage.text = "2글자에서 10글자 사이로 해주세요!";
+        Debug.Log(PlayerPrefs.GetString("PlayerName"));
     }
 
     public void ChangeToMain()
